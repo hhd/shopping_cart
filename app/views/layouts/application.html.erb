@@ -4,13 +4,33 @@
   <head>
     <title>Hard Hat Ruby on Rails template</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/stylesheets/print.css" type="text/css" media="print" />
   </head>
   <body>
-    <%= yield %>
-    <p>
-      <%= link_to "Home", "/" %> | 
-      <%= link_to "Cameras", cameras_path %> | 
-      <%= link_to "Lenses", lenses_path %>
+    <div class="container">
+
+      <%- unless flash[:notice].blank? -%>
+       <p id="notice"><%= flash[:notice] %></p>
+      <%- end -%>
+
+      <h1>HHD Camera Store</h1>
+
+      <hr />
+
+      <div id="sidebar" class="span-4 colborder">
+        <ul>
+          <li><%= link_to "Home", "/" %></li>
+          <li><%= link_to "Cameras", cameras_path %></li>
+          <li><%= link_to "Lenses", lenses_path %></li>
+        </ul>
+      </div>
+
+      <div id="content" class="span-8 last">
+        <%= yield %>
+      </div>
+
+    </div>
   </body>
 </html>
 

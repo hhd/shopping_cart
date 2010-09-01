@@ -1,6 +1,6 @@
-<p><%= link_to "Back to lenses", lenses_path %></p>
+<h2><%= @lense.name %></h2>
 
-<h1 id="name"><%= @lense.name %></h1>
+<p><%= link_to "Back to lenses", lenses_path %></p>
 
 <p id="price"><%= number_to_currency @lense.price %></p>
 
