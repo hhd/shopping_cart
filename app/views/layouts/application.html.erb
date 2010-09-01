@@ -7,6 +7,10 @@
   </head>
   <body>
     <%= yield %>
+    <p>
+      <%= link_to "Home", "/" %> | 
+      <%= link_to "Cameras", cameras_path %> | 
+      <%= link_to "Lenses", lenses_path %>
   </body>
 </html>
 

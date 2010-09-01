@@ -3,13 +3,10 @@
 <html>
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <title>Hard Hat Digital Rails template</title>
+    <title>HHD Camera Store</title>
   </head>
   <body>
-    <h1>Welcome to the template!</h1>
-    <p>You are looking at the Homepage, located in <strong>./app/views/static/index.html.erb</strong></p>
-    <p>You should delete me along with the application layout and add your own view here!</p>
-    <h2>Administration</h2>
-    <p>If you've run migrations and seeded the database (<strong>rake db:seed</strong>), you can <a href="/admin">check out the CMS</a> with your test username/password.</p>
+    <h1>Welcome to the HHD Camera Store!</h1>
+    <p>Check out our huge range of <%= link_to "Cameras", cameras_path %> and <%= link_to "Lenses", lenses_path %>.</p>
   </body>
 </html>

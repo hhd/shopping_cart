@@ -1,0 +1,12 @@
+<h1>Lenses</h1>
+
+<%- unless @lenses.blank? -%>
+  <ol>
+    <%- for lense in @lenses -%>
+      <li>
+        <h2 class="name"><%= link_to lense.name, lense %></h2>
+        <span class="price"><%= number_to_currency lense.price %></span>
+      </li>
+    <%- end -%>
+  </ol>
+<%- end -%>

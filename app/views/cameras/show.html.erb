@@ -1,0 +1,9 @@
+<p><%= link_to "Back to camera listing", cameras_path %></p>
+
+<h1 id="model"><%= @camera.model %></h1>
+<p id="price"><%= number_to_currency @camera.price %></p>
+
+<div id="description">
+<%= simple_format @camera.description %>
+</div>
+

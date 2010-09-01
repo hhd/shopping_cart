@@ -1,0 +1,21 @@
+<p><%= link_to "Back to lenses", lenses_path %></p>
+
+<h1 id="name"><%= @lense.name %></h1>
+
+<p id="price"><%= number_to_currency @lense.price %></p>
+
+<dl>
+  <dt class="focal_length">Focal Length</dt>
+  <dd class="focal_length"><%= @lense.focal_length %>mm</dd>
+  <dt class="apature">Apature</dt>
+  <dd class="apature">f/<%= @lense.apature %></dd>
+  <%- unless @lense.features.blank? -%>
+  <dt class="features">Features</dt>
+  <dd class="features"><%= @lense.features %></dd>
+  <%- end -%>
+</dl>
+
+<div id="description">
+  <%= simple_format @lense.description %>
+</div>
+
