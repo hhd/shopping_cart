@@ -4,7 +4,7 @@ class Admin::CamerasController < AdminController
     config.list.label = "Cameras"
     config.create.label = "Create Camera"
 
-    config.columns = [:model, :price, :description]
+    config.columns = [:brand, :model, :price, :description]
     config.list.columns.exclude [:description]
 
     config.columns[:updated_at].options = {:format => "%d/%m/%Y %I:%M%p"}

@@ -4,7 +4,7 @@
   <ol id="cameras">
     <%- for camera in @cameras -%>
     <li>
-      <h2 class="model"><%= link_to camera.model, camera %></h2>
+      <h2 class="name"><%= link_to camera.name, camera %></h2>
       <span class="price"><%= number_to_currency camera.price %></span>
     </li>
     <%- end -%>
