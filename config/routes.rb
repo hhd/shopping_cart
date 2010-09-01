@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :cameras
   map.resources :lenses
+  map.resource :order
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes"
