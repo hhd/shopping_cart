@@ -1,0 +1,39 @@
+
+02. Rich text editor fields
+------------------------------
+
+Implementation
+----------------
+
+The template ships with TinyMCE installed. In order to display a field in the CMS as a rich-text-editor (WYSIWYG)
+you will need to provide just a little bit of configuration (see 'example' section).
+
+By default I have provided some sane defaults in ./config/tiny_mce.yml, but this can be overridden by passing configuration
+directly to the uses_tiny_mce method.
+
+For complete documentation and customisations, you should read the official docs: http://github.com/kete/tiny_mce
+
+
+Example
+---------
+
+If you have a ProductsController and you'd like the "description" field to appear as an RTE, you should:
+
+  0) Ensure the "description" field is of type "text" in the database.
+  1) Add a call to the "uses_tiny_mce" method into the admin controller. For example:
+
+     class Admin::ProductsController > AdminController
+       uses_tiny_mce
+
+       active_scaffold :products do |config|
+         # ....
+       end
+     end
+
+  2) Add the "comments" fields to the columns array in your ActiveScaffold configuration. Also ensure you
+     set the form_u for this column to be :text_editor:
+
+     config.columns = [:name, :description]
+     config.columns[:description].form_ui = :text_editor
+
+Upon starting the server and creating/editing a product record, the "description" field should appear as a full WYSIWYG editor.

@@ -1,0 +1,15 @@
+<% form_for resource_name, resource, :url => password_path(resource_name), :html => {:class => "frm"} do |f| %>
+  <h3>Forgot your password?</h3>
+  <%= f.error_messages %>
+  <ul>
+    <li>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </li>
+    <li class="last">
+      <%= f.submit "Deliver" %>
+    </li>
+  </ul>
+<% end %>
+
+<%= render :partial => "shared/devise_links" %>

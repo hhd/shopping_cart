@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  apature: MyString
+  focal_length: MyString
+  features: MyString
+  description: MyText
+
+two:
+  apature: MyString
+  focal_length: MyString
+  features: MyString
+  description: MyText

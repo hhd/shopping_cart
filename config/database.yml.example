@@ -1,0 +1,19 @@
+--- 
+production: 
+  encoding: utf8
+  adapter: mysql
+  username: 
+  database: 
+  pool: 5
+  host: localhost
+  password: 
+development: 
+  timeout: 5000
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+test: 
+  timeout: 5000
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5

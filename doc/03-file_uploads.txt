@@ -1,0 +1,45 @@
+
+03. File uploads
+------------------
+
+Implementation
+----------------
+
+The template ships with the FileColumn plugin installed. In order to allow a field in the CMS to accept a file upload, you
+must just specify which field(s) are FileColumn-enabled in the corresponding model.
+
+ActiveScaffold has a built-in bridge for FileColumn, and thus fields will auotmatically appear as file uploads without any
+additional configuration. Just ensure that you have added the column into your admin controllers configuration.
+
+For complete documentation and customisations, you should read the official docs: http://www.kanthak.net/opensource/file_column
+
+
+Example
+---------
+
+If you have a Product model and you'd like the "image" field to appear as a file upload, you should:
+
+  0) Ensure the "image" field is of type "string" in the database.
+  1) Add a call to the "file_column" method into the model. For example:
+
+     class Product < ActiveRecord::Base
+       file_column :image, {:magick => {:versions => {"thumb" => "220x180", "medium" => "460x380"}},
+                            :root_path => File.join(RAILS_ROOT, "public/system"),
+                            :web_root => "system/"}
+     end
+
+The code above specifies the following:
+
+  - Create two versions of the uploaded image (a thumbnail (thumb) and a larger (medium) version)
+  - Store the uploaded file in ./public/system
+    - This, along with the "web_root" setting are used so the uploaded files work nicely with Capistrano.
+
+Upon starting the server and creating/editing a product record, the "image" field should appear as a file upload dialog.
+
+To display the image in the view, you can do something like this:
+
+  <%= image_tag(url_for_file_column(@product, "image", "medium")) %>
+
+  OR
+
+  <img src="<%= url_for_file_column(@product, "image", "large") %>" alt="<%= @product.name %>" />

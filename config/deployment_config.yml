@@ -1,0 +1,5 @@
+--- 
+app_name: tester
+repo_name: hhd_template
+live_domain: yourclient.com.au
+subdomain: tester
