@@ -21,7 +21,7 @@ class PurchasesController < ApplicationController
       @order.save
     end
 
-    redirect_to order_path
+    redirect_to order_purchases_path
   end
 
  protected

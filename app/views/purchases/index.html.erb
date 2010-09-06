@@ -1,2 +1,16 @@
-<h1>Purchases#index</h1>
-<p>Find me in app/views/purchases/index.html.erb</p>
+<h1>Your Purchases</h1>
+
+<%- unless @order.purchases.blank? -%>
+<ul id="purchases">
+  <%- for purchase in @order.purchases -%>
+  <li>
+    <span class="quantity"><%= purchase.quantity %></span>
+    <span class="name"><%= link_to purchase.name, purchase.purchasable %></span>
+    <span class="sub_total"><%= number_to_currency purchase.sub_total %></span>
+  </li>
+  <%- end -%>
+</ul>
+<%- end -%>
+
+<p>Total: <%= number_to_currency @order.total %></p>
+
