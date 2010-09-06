@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :cameras
   map.resources :lenses
+  map.resources :addresses
 
   map.resource :order, :member => {:shipping => :get} do |order|
     order.resources :purchases
