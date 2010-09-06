@@ -9,7 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100906052618) do
+ActiveRecord::Schema.define(:version => 20100906064529) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "name"
+    t.string   "line_one"
+    t.string   "line_two"
+    t.string   "suburb"
+    t.string   "state"
+    t.string   "post_code"
+    t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -50,6 +62,8 @@ ActiveRecord::Schema.define(:version => 20100906052618) do
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "billing_address_id"
+    t.integer  "shipping_address_id"
   end
 
   create_table "purchases", :force => true do |t|
