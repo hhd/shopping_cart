@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_filter :create_or_find_order
 
-  def show
+  def shipping
   end
 
  protected

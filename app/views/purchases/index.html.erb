@@ -1,20 +1,37 @@
-<h1>Your Purchases</h1>
+<h2>Your Purchases</h2>
 
 <%- unless @order.purchases.blank? -%>
-<ul id="purchases">
-  <%- for purchase in @order.purchases -%>
-  <li>
-    <span class="quantity"><%= purchase.quantity %></span>
-    <span class="name"><%= link_to purchase.name, purchase.purchasable %></span>
-    <span class="sub_total"><%= number_to_currency purchase.sub_total %></span>
+<table>
 
+  <tr>
+    <th>Quantity</th>
+    <th>Name</th>
+    <th>Remove</th>
+    <th>Total</th>
+  </tr>
+
+  <%- for purchase in @order.purchases -%>
+  <tr>
+    <td class="quantity"><%= purchase.quantity %></td>
+    <td class="name"><%= link_to purchase.name, purchase.purchasable %></td>
+    <td class="remove">
     <%- form_for [:order, purchase], :html => {:method => :delete} do |f| -%>
       <%= f.submit "Remove" %>
     <%- end -%>
-  </li>
+    </td>
+    <td class="sub_total"><%= number_to_currency purchase.sub_total %></td>
+  </tr>
   <%- end -%>
-</ul>
+
+  <tr id="agregate">
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><%= number_to_currency @order.total %></td>
+  </tr>
+
+</table>
 <%- end -%>
 
-<p>Total: <%= number_to_currency @order.total %></p>
+<a href="/order/shipping">Continue to shipping details</a>
 
