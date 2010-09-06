@@ -7,6 +7,10 @@
     <span class="quantity"><%= purchase.quantity %></span>
     <span class="name"><%= link_to purchase.name, purchase.purchasable %></span>
     <span class="sub_total"><%= number_to_currency purchase.sub_total %></span>
+
+    <%- form_for [:order, purchase], :html => {:method => :delete} do |f| -%>
+      <%= f.submit "Remove" %>
+    <%- end -%>
   </li>
   <%- end -%>
 </ul>

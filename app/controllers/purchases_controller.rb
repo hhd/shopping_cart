@@ -24,6 +24,11 @@ class PurchasesController < ApplicationController
     redirect_to order_purchases_path
   end
 
+  def destroy
+    @order.purchases.find(params[:id]).destroy
+    redirect_to order_purchases_path
+  end
+
  protected
 
   def create_or_find_order
