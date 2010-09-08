@@ -1,4 +1,8 @@
 <h2>Billing</h2>
 
-<%= render :partial => "address_form", :locals => {:address => @order.billing_address} %>
+<% form_for @order.billing_address, :url => billing_address_path(@order.shipping_address) do |f| %>
+  <%= error_messages_for "address", :object => @order.billing_address %>
+
+  <%= render :partial => "address_fields", :locals => {:f => f} %>
+<% end %>
 

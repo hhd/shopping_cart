@@ -1,0 +1,8 @@
+<h2>Shipping</h2>
+
+<% form_for @order.shipping_address, :url => "/order/shipping_address" do |f| %>
+  <%= error_messages_for "address", :object => @order.shipping_address %>
+
+  <%= render :partial => "address_fields", :locals => {:f => f} %>
+<% end %>
+

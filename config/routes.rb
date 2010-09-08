@@ -1,10 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :cameras
   map.resources :lenses
-  map.resources :addresses
 
-  map.resource :order, :member => {:shipping => :get, :billing => :get} do |order|
+  map.resource :order do |order|
     order.resources :purchases
+    order.resource :shipping_address
+    order.resource :billing_address
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -16,11 +17,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace :admin do |admin|
     admin.resources :lenses, :active_scaffold => true
-
     admin.resources :cameras, :active_scaffold => true
-
     admin.resources :admins, :active_scaffold => true
-
     admin.root :controller => "admin", :action => "index"
   end
 
