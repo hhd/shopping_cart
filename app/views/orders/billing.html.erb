@@ -1,7 +1,7 @@
-<h2>Shipping</h2>
+<h2>Billing</h2>
 
-<% form_for @order.shipping_address do |f| %>
-  <%= error_messages_for "address", :object => @order.shipping_address %>
+<% form_for @order.billing_address do |f| %>
+  <%= error_messages_for "address", :object => @order.billing_address %>
 
   <p>
     <%= f.label :name %>

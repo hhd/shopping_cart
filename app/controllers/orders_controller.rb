@@ -5,6 +5,10 @@ class OrdersController < ApplicationController
     @order.shipping_address ||= Address.new
   end
 
+  def billing
+    @order.billing_address ||= Address.new
+  end
+
  protected
 
   def create_or_find_order

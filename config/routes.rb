@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :lenses
   map.resources :addresses
 
-  map.resource :order, :member => {:shipping => :get} do |order|
+  map.resource :order, :member => {:shipping => :get, :billing => :get} do |order|
     order.resources :purchases
   end
 
