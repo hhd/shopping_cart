@@ -21,7 +21,12 @@ class PurchasesController < ApplicationController
       @order.save
     end
 
-    redirect_to order_purchases_path
+    if params[:redirect_to]
+      flash[:success] = %{#{params[:purchase][:name]} has been added to your order. <a href="/order/purchases">Proceed to checkout</a>.}
+      redirect_to params[:redirect_to]
+    else
+      redirect_to order_purchases_path
+    end
   end
 
   def destroy
