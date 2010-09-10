@@ -1,24 +1,32 @@
 class BillingAddressesController < ApplicationController
+  before_filter :find_order
+
+  def show
+    @order.billing_address ||= Address.new
+  end
 
   def create
-    order = Order.find(session[:order_id])
-    order.build_billing_address(params[:address])
+    @order.build_billing_address(params[:address])
 
-    if order.save
-      redirect_to billing_order_path
+    if @order.billing_address.save and @order.save
+      redirect_to order_billing_address_path
     else
-      render :template => "orders/billing"
+      render :action => "show"
     end
   end
 
   def update
-    address = Address.find(params[:id])
-
-    if address.update_attributes(params[:address])
-      redirect_to billing_order_path
+    if @order.billing_address.update_attributes(params[:address])
+      redirect_to order_billing_address_path
     else
-      render :template => "orders/billing"
+      render :action => "show"
     end
+  end
+
+ protected
+
+  def find_order
+    @order = Order.find(session[:order_id])
   end
 
 end
