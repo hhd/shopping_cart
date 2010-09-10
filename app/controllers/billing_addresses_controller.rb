@@ -9,7 +9,7 @@ class BillingAddressesController < ApplicationController
     @order.build_billing_address(params[:address])
 
     if @order.billing_address.save and @order.save
-      redirect_to order_billing_address_path
+      redirect_to order_path
     else
       render :action => "show"
     end
@@ -17,7 +17,7 @@ class BillingAddressesController < ApplicationController
 
   def update
     if @order.billing_address.update_attributes(params[:address])
-      redirect_to order_billing_address_path
+      redirect_to order_path
     else
       render :action => "show"
     end
