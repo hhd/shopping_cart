@@ -2,9 +2,6 @@ class PurchasesController < ApplicationController
 
   before_filter :create_or_find_order
 
-  def index
-  end
-
   # If the purchase has already been made then add to the quantity
   # otherwise create the purchase
   def create
@@ -27,6 +24,12 @@ class PurchasesController < ApplicationController
     else
       redirect_to order_purchases_path
     end
+  end
+
+  def update
+    purchase = Purchase.find(params[:id])
+    purchase.update_attributes(params[:purchase])
+    redirect_to order_purchases_path
   end
 
   def destroy

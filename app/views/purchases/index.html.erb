@@ -12,12 +12,17 @@
 
   <%- for purchase in @order.purchases -%>
   <tr>
-    <td class="quantity"><%= purchase.quantity %></td>
+    <td class="quantity">
+      <%- form_for [:order, purchase] do |f| -%>
+        <%= f.text_field :quantity %>
+        <%= f.submit "Update" %>
+      <%- end -%>
+    </td>
     <td class="name"><%= link_to purchase.name, purchase.purchasable %></td>
     <td class="remove">
-    <%- form_for [:order, purchase], :html => {:method => :delete} do |f| -%>
-      <%= f.submit "Remove" %>
-    <%- end -%>
+      <%- form_for [:order, purchase], :html => {:method => :delete} do |f| -%>
+        <%= f.submit "Remove" %>
+      <%- end -%>
     </td>
     <td class="sub_total"><%= number_to_currency purchase.sub_total %></td>
   </tr>
