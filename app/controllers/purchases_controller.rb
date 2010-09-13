@@ -22,7 +22,7 @@ class PurchasesController < ApplicationController
     end
 
     if params[:redirect_to]
-      flash[:success] = %{#{params[:purchase][:name]} has been added to your order. <a href="/order/purchases">Proceed to checkout</a>.}
+      flash[:success] = %{#{params[:purchase][:name]} has been added to your order. <a href="/order/purchases">Proceed to checkout</a>.} unless params[:hide_flash]
       redirect_to params[:redirect_to]
     else
       redirect_to order_purchases_path

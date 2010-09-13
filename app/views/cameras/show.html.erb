@@ -12,10 +12,12 @@
   <% form_for [:order, @camera.purchase] do |f| %>
     <%= f.hidden_field :name %>
     <%= f.hidden_field :price %>
-    <%= f.hidden_field :quantity %>
+    <%= f.text_field :quantity %>
     <%= f.hidden_field :purchasable_id %>
     <%= f.hidden_field :purchasable_type %>
-    <%= f.submit "Add to cart" %>
+    <%= hidden_field_tag :redirect_to, order_shipping_address_path %>
+    <%= hidden_field_tag :hide_flash, "true" %>
+    <%= f.submit "One click" %>
   <% end %>
 </div>
 
