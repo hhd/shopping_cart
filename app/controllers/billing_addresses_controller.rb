@@ -8,7 +8,7 @@ class BillingAddressesController < ApplicationController
   def create
     @order.build_billing_address(params[:address])
 
-    if @order.billing_address.save and @order.save
+    if @order.save
       redirect_to order_path
     else
       render :action => "show"
