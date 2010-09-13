@@ -32,7 +32,7 @@
 
   <p>
     <%= f.label :country %>
-    <%= f.select :country, COUNTRIES %>
+    <%= f.select :country, COUNTRIES, :selected => @order.billing_address.country || "Australia" %>
   </p>
 
   <p>

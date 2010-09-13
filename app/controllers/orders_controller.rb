@@ -2,10 +2,16 @@ class OrdersController < ApplicationController
   before_filter :find_order, :except => [:thankyou]
 
   def create
+    @order.email = params[:order][:email]
     @order.placed = DateTime.now
-    @order.save
-    session[:order_id] = nil
-    redirect_to :action => "thankyou"
+
+    if @order.save
+      CartMailer.deliver_thankyou(@order)
+      session[:order_id] = nil
+      redirect_to :action => "thankyou"
+    else
+      render :action => "show"
+    end
   end
 
   def thankyou

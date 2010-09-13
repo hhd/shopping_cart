@@ -10,7 +10,11 @@ class ShippingAddressesController < ApplicationController
     @order.build_billing_address(params[:address]) if params[:use_for_billing]
 
     if @order.save
-      redirect_to order_billing_address_path
+      if params[:use_for_billing]
+        redirect_to order_path
+      else
+        redirect_to order_billing_address_path
+      end
     else
       render :action => "show"
     end

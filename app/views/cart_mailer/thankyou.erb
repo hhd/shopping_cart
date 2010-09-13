@@ -1,0 +1,35 @@
+RECIEPT
+====================
+
+Your Purchases
+--------------------
+<%- for purchase in @order.purchases -%>
+<%= purchase.quantity %> <%= purchase.name %> ( <%= number_to_currency purchase.sub_total %> )
+<%- end -%>
+
+Total: <%= number_to_currency @order.total %>
+
+Shipping Address
+--------------------
+Name: <%= @order.shipping_address.name %>
+Line one: <%= @order.shipping_address.line_one %>
+<%- unless @order.shipping_address.line_two.blank? -%>
+Line two: <%= @order.shipping_address.line_two %>
+<%- end -%>
+Suburb: <%= @order.shipping_address.suburb %>
+State: <%= @order.shipping_address.state %>
+Post code: <%= @order.shipping_address.post_code %>
+Country: <%= @order.shipping_address.country %>
+
+Billing Address
+--------------------
+Name: <%= @order.billing_address.name %>
+Line one: <%= @order.billing_address.line_one %>
+<%- unless @order.billing_address.line_two.blank? -%>
+Line two: <%= @order.billing_address.line_two %>
+<%- end -%>
+Suburb: <%= @order.billing_address.suburb %>
+State: <%= @order.billing_address.state %>
+Post code: <%= @order.billing_address.post_code %>
+Country: <%= @order.billing_address.country %>
+

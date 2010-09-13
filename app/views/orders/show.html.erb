@@ -2,7 +2,7 @@
 
 <div id="your_purchases">
 
-  <h3>Your Purchases</h3>
+  <h3>Your purchases</h3>
 
   <%- unless @order.purchases.blank? -%>
   <table>
@@ -34,7 +34,7 @@
 
 <div id="shipping" class="address">
 
-  <h3>Shipping Address</h3>
+  <h3>Shipping address</h3>
 
   <dl>
     <dt>Name</dt>
@@ -59,7 +59,7 @@
 
 <div id="billing" class="address">
 
-  <h3>Billing Address</h3>
+  <h3>Billing address</h3>
 
   <dl>
     <dt>Name</dt>
@@ -84,6 +84,15 @@
 
 <div id="place">
   <% form_for :order do |f| %>
-    <%= f.submit "Place your order" %>
+
+    <p>
+      Enter your <strong>email address</strong> here if you would like to be sent a copy of your receipt:<br />
+      <%= f.text_field :email %>
+    </p>
+
+    <p>
+      <%= f.submit "Place your order" %>
+    </p>
+
   <% end %>
 </div>
