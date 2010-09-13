@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
   end
 
   def thankyou
-    render :text => "thankyou"
   end
 
  protected
