@@ -7,8 +7,9 @@ class ShippingAddressesController < ApplicationController
 
   def create
     @order.build_shipping_address(params[:address])
+    @order.build_billing_address(params[:address]) if params[:use_for_billing]
 
-    if @order.shipping_address.save and @order.save
+    if @order.save
       redirect_to order_billing_address_path
     else
       render :action => "show"
@@ -17,7 +18,11 @@ class ShippingAddressesController < ApplicationController
 
   def update
     if @order.shipping_address.update_attributes(params[:address])
-      redirect_to order_billing_address_path
+      if params[:use_for_billing] and @order.billing_address.update_attributes(params[:address])
+        redirect_to order_path
+      else
+        redirect_to order_billing_address_path
+      end
     else
       render :action => "show"
     end

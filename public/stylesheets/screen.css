@@ -261,3 +261,4 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 .edit_address label {display: block;}
 .new_address label {display: block;}
 .address {float: left; width: 50%;}
+#use_for_billing_label {display: inline;}

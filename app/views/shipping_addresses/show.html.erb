@@ -32,7 +32,12 @@
 
   <p>
     <%= f.label :country %>
-    <%= f.text_field :country %>
+    <%= f.select :country, COUNTRIES %>
+  </p>
+
+  <p>
+    <input id="use_for_billing" name="use_for_billing" type="checkbox" checked="checked" />
+    <label id="use_for_billing_label" for="use_for_billing">Use for billing</label>
   </p>
 
   <p>
