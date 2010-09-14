@@ -1,0 +1,8 @@
+Description:
+    Explain the generator
+
+Example:
+    ./script/generate hhd_shopping_cart Thing
+
+    This will create:
+        what/will/it/create
