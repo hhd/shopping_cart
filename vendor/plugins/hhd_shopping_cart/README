@@ -1,0 +1,20 @@
+HHD Shopping Cart
+=================
+
+This plugin will provide you with a generator and some helper methods for creating a shopping cart.
+
+
+Example
+=======
+
+  # app/models/product.rb
+  class Product << ActiveRecord::Base
+    acts_as_purchasable :name => :title, :price => :points
+  end
+
+  # app/views/models/show.html.erb
+  <% purchasable_form_for @product.to_purchase do |f| %>
+    <%= f.text_field :quantity %>
+    <%= f.submit "Add to kart %>
+  <% end %>
+
