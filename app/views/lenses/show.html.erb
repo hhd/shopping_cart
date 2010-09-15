@@ -20,7 +20,7 @@
 </div>
 
 <div id="add_to_cart">
-  <% purchasable_form_for [:order, @lense.purchase] do |f| %>
+  <% purchasable_form_for @lense.purchase do |f| %>
     <%= hidden_field_tag :redirect_to, lense_path(@lense) %>
     <%= f.submit "Add to cart" %>
   <% end %>

@@ -9,7 +9,7 @@
 </div>
 
 <div id="add_to_cart">
-  <% purchasable_form_for [:order, @camera.purchase] do |f| %>
+  <% purchasable_form_for @camera.purchase do |f| %>
     <%= hidden_field_tag :redirect_to, order_shipping_address_path %>
     <%= hidden_field_tag :hide_flash, "true" %>
     <%= f.submit "One click" %>
