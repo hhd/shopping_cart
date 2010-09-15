@@ -1,8 +1,39 @@
 Description:
-    Explain the generator
+    This will generate a shopping cart within your application. Controllers,
+    models views and migrations are entered into your application giving you
+    full control to change appearance and functionality, as is often the case
+    for bespoke shopping carts. The shopping cart plugin is still required once
+    the cart has been generated as it duck punches in acts_as_purchasable and
+    purchasable_form_for.
 
 Example:
     ./script/generate hhd_shopping_cart Thing
 
     This will create:
-        what/will/it/create
+      app/
+        controllers/
+          billing_addresses_controller.rb
+          orders_controller.rb
+          purchases_controller.rb
+          shipping_addresses_controller.rb
+        models/
+          address.rb
+          cart_mailer.rb
+          order.rb
+          purchase.rb
+        views/
+          billing_addresses
+            show.html.erb
+          cart_mailer/
+            thankyou.erb
+          orders/
+            show.html.erb
+            thankyou.html.erb
+          purchases/
+            create.html.erb
+            create.html.erb
+          shipping_addresses/
+            create.html.erb
+      db/
+        migrations/
+          20100902031337_create_shopping_cart.rb
