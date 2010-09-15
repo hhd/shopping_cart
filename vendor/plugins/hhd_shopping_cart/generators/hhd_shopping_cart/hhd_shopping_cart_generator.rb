@@ -31,8 +31,37 @@ class HhdShoppingCartGenerator < Rails::Generator::NamedBase
         m.directory "app/views/shipping_addresses"
           m.file "views/shipping_addresses/show.html.erb", "app/views/shipping_addresses/show.html.erb"
 
+      m.directory "config/initializers"
+        m.file "initializers/countries.rb", "config/initializers/countries.rb"
+
       m.directory "db/migrate"
         m.file "migrate/20100902031337_create_shopping_cart.rb", "db/migrate/20100902031337_create_shopping_cart.rb"
+
+      insert_routes <<-ROUTES
+  map.resource :order do |order|
+    order.resources :purchases
+    order.resource :shipping_address
+    order.resource :billing_address
+  end
+      ROUTES
     end
   end
+
+  def insert_routes(routes)
+    sentinel = 'ActionController::Routing::Routes.draw do |map|'
+    
+    logger.route routes
+    unless options[:pretend]
+      gsub_file 'config/routes.rb', /(#{Regexp.escape(sentinel)})/mi do |match|
+        "#{match}\n#{routes}\n"
+      end
+    end
+  end
+
+  def gsub_file(relative_destination, regexp, *args, &block)
+    path = destination_path(relative_destination)
+    content = File.read(path).gsub(regexp, *args, &block)
+    File.open(path, 'wb') { |file| file.write(content) }
+  end
+
 end
