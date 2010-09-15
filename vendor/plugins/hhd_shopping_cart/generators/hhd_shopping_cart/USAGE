@@ -31,9 +31,9 @@ Example:
             thankyou.html.erb
           purchases/
             create.html.erb
-            create.html.erb
+            index.html.erb
           shipping_addresses/
             create.html.erb
       db/
-        migrations/
+        migrate/
           20100902031337_create_shopping_cart.rb
