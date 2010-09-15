@@ -29,10 +29,10 @@ class HhdShoppingCartGenerator < Rails::Generator::NamedBase
           m.file "views/purchases/index.html.erb", "app/views/purchases/index.html.erb"
 
         m.directory "app/views/shipping_addresses"
-          m.file "views/orders/show.html.erb", "app/views/orders/show.html.erb"
+          m.file "views/shipping_addresses/show.html.erb", "app/views/shipping_addresses/show.html.erb"
 
       m.directory "db/migrate"
-        m.file "migrate/20100902031337_create_shopping_cart.rb", "db/migrations/20100902031337_create_shopping_cart.rb"
+        m.file "migrate/20100902031337_create_shopping_cart.rb", "db/migrate/20100902031337_create_shopping_cart.rb"
     end
   end
 end
