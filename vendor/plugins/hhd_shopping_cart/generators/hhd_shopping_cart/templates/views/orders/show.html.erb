@@ -1,0 +1,98 @@
+<h2>Order</h2>
+
+<div id="your_purchases">
+
+  <h3>Your purchases</h3>
+
+  <%- unless @order.purchases.blank? -%>
+  <table>
+
+    <tr>
+      <th>Quantity</th>
+      <th>Name</th>
+      <th>Total</th>
+    </tr>
+
+    <%- for purchase in @order.purchases -%>
+    <tr>
+      <td class="quantity"><%= purchase.quantity %></td>
+      <td class="name"><%= purchase.name %></td>
+      <td class="sub_total"><%= number_to_currency purchase.sub_total %></td>
+    </tr>
+    <%- end -%>
+
+    <tr id="agregate">
+      <td></td>
+      <td></td>
+      <td><%= number_to_currency @order.total %></td>
+    </tr>
+
+  </table>
+  <%- end -%>
+
+</div>
+
+<div id="shipping" class="address">
+
+  <h3>Shipping address</h3>
+
+  <dl>
+    <dt>Name</dt>
+    <dd><%= @order.shipping_address.name %></dd>
+    <dt>Line one</dt>
+    <dd><%= @order.shipping_address.line_one %></dd>
+    <%- unless @order.shipping_address.line_two.blank? -%>
+    <dt>Line two</dt>
+    <dd><%= @order.shipping_address.line_two %></dd>
+    <%- end -%>
+    <dt>Suburb</dt>
+    <dd><%= @order.shipping_address.suburb %></dd>
+    <dt>State</dt>
+    <dd><%= @order.shipping_address.state %></dd>
+    <dt>Post code</dt>
+    <dd><%= @order.shipping_address.post_code %></dd>
+    <dt>Country</dt>
+    <dd><%= @order.shipping_address.country %></dd>
+  </dl>
+
+</div>
+
+<div id="billing" class="address">
+
+  <h3>Billing address</h3>
+
+  <dl>
+    <dt>Name</dt>
+    <dd><%= @order.billing_address.name %></dd>
+    <dt>Line one</dt>
+    <dd><%= @order.billing_address.line_one %></dd>
+    <%- unless @order.billing_address.line_two.blank? -%>
+    <dt>Line two</dt>
+    <dd><%= @order.billing_address.line_two %></dd>
+    <%- end -%>
+    <dt>Suburb</dt>
+    <dd><%= @order.billing_address.suburb %></dd>
+    <dt>State</dt>
+    <dd><%= @order.billing_address.state %></dd>
+    <dt>Post code</dt>
+    <dd><%= @order.billing_address.post_code %></dd>
+    <dt>Country</dt>
+    <dd><%= @order.billing_address.country %></dd>
+  </dl>
+
+</div>
+
+<div id="place">
+  <% form_for :order do |f| %>
+
+    <p>
+      Enter your <strong>email address</strong> here if you would like to be sent a copy of your receipt:<br />
+      <%= f.text_field :email %>
+    </p>
+
+    <p>
+      <%= f.submit "Place your order" %>
+    </p>
+
+  <% end %>
+</div>

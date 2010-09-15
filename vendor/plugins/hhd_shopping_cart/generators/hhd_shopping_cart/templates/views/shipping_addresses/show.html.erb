@@ -1,0 +1,48 @@
+<h2>Shipping</h2>
+
+<% form_for @order.shipping_address, :url => "/order/shipping_address" do |f| %>
+
+  <%= error_messages_for "address", :object => @order.shipping_address %>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :line_one, "Street address" %>
+    <%= f.text_field :line_one %><br />
+    <%= f.text_field :line_two %>
+  </p>
+
+  <p>
+    <%= f.label :suburb %>
+    <%= f.text_field :suburb %>
+  </p>
+
+  <p>
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+  </p>
+
+  <p>
+    <%= f.label :post_code %>
+    <%= f.text_field :post_code %>
+  </p>
+
+  <p>
+    <%= f.label :country %>
+    <%= f.select :country, COUNTRIES, :selected => @order.shipping_address.country || "Australia" %>
+  </p>
+
+  <p>
+    <input id="use_for_billing" name="use_for_billing" type="checkbox" checked="checked" />
+    <label id="use_for_billing_label" for="use_for_billing">Use for billing</label>
+  </p>
+
+  <p>
+    <%= f.submit "Continue" %>
+  </p>
+
+<% end %>
+
