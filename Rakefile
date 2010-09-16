@@ -1,10 +1,12 @@
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
-
-require(File.join(File.dirname(__FILE__), 'config', 'boot'))
-
 require 'rake'
 require 'rake/testtask'
-require 'rake/rdoctask'
 
-require 'tasks/rails'
+desc 'Default: run hhd_shopping_cart unit tests.'
+task :default => :test
+
+desc 'Test the hhd_shopping_cart plugin.'
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'lib'
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = true
+end

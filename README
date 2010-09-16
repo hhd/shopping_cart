@@ -1,56 +1,20 @@
-== Welcome to a HARD HAT Ruby on Rails application ==
+HHD Shopping Cart
+=================
+
+This plugin will provide you with a generator and some helper methods for creating a shopping cart.
 
 
-0) Introduction / Setup
--------------------------
+Example
+=======
 
-This application consists of a bare Rails application with a bunch of things to help get you started quickly.  The philosophy is that you already know what you're doing and no power should be taken away from you. 
+  # app/models/product.rb
+  class Product << ActiveRecord::Base
+    acts_as_purchasable :name => :title, :price => :points
+  end
 
-To get started (if you've used the "hhd:rails:new" thor task):
+  # app/views/models/show.html.erb
+  <% purchasable_form_for @product.to_purchase do |f| %>
+    <%= f.text_field :quantity %>
+    <%= f.submit "Add to kart %>
+  <% end %>
 
-  0) Create and populate the database:
-
-     $ rake db:migrate && rake db:seed
-
-  1) Run the server and take a look at http://localhost:3000:
-
-     $ ./script/server
-
-  2) Commit and push your changes (thor task will have already created a remote repository)
-
-     $ git add .
-     $ git commit -avm "Initial commit"
-     $ git push origin master
-
-For concise documentation, please see ./doc/*
-
-
-1) Contents
--------------
-
-This application consists of:
-
- - Ruby on Rails template (version will be atleast 2.3.8)
- - Fully automated deployment for staging and production
-   - Uses Capistrano, so run: cap -T
- - Authentication framework
-   - Works with multiple roles (admin, users, etc)
-   - Already installed and working for CMS (http://localhost:3000/admin)
- - Framework (incl. DSL) for CMS
-   - Uses ActiveScaffold
-   - Admin users section already completed and working
-   - Bridge for FileColumn (file uploads)
-   - Bridge for TinyMCE (Rich text editor)
- - Custom generators for admin controllers (CMS sections)
-   - ./script/generate hhd_controller some_name
-     - Generates admin/controller within CMS framework
-     - Creates routes
- - Application-wide configuration for constants, etc
-   - See: ./config/app_config.rb
- - Example seed data:
-   - See: ./db/seeds.rb
- - Common static files
-   - JQuery (linking from Googles AJAX APIs server), Prototype
-   - CSS templates
- - StaticController pattern for non-model-centric actions
-   - /contact for example maps to :controller => "static", :action => "contact"
