@@ -7,6 +7,12 @@ class HhdShoppingCartGenerator < Rails::Generator::NamedBase
         m.file "controllers/purchases_controller.rb", "app/controllers/purchases_controller.rb"
         m.file "controllers/shipping_addresses_controller.rb", "app/controllers/shipping_addresses_controller.rb"
 
+        m.directory "app/controllers/admin"
+          m.file "controllers/admin/billing_addresses_controller.rb", "app/controllers/admin/billing_addresses_controller.rb"
+          m.file "controllers/admin/orders_controller.rb", "app/controllers/admin/orders_controller.rb"
+          m.file "controllers/admin/purchases_controller.rb", "app/controllers/admin/purchases_controller.rb"
+          m.file "controllers/admin/shipping_addresses_controller.rb", "app/controllers/admin/shipping_addresses_controller.rb"
+
       m.directory "app/models"
         m.file "models/address.rb", "app/models/address.rb"
         m.file "models/cart_mailer.rb", "app/models/cart_mailer.rb"
@@ -36,6 +42,14 @@ class HhdShoppingCartGenerator < Rails::Generator::NamedBase
 
       m.directory "db/migrate"
         m.file "migrate/20100902031337_create_shopping_cart.rb", "db/migrate/20100902031337_create_shopping_cart.rb"
+      
+      insert_routes <<-ROUTES
+  map.namespace :admin do |admin|
+    admin.resources :addresses, :active_scaffold => true
+    admin.resources :purchases, :active_scaffold => true
+    admin.resources :orders, :active_scaffold => true
+  end
+      ROUTES
 
       insert_routes <<-ROUTES
   map.resource :order do |order|
@@ -44,6 +58,8 @@ class HhdShoppingCartGenerator < Rails::Generator::NamedBase
     order.resource :billing_address
   end
       ROUTES
+
+      puts "You will need to add the orders admin area into the navigation yourself."
     end
   end
 

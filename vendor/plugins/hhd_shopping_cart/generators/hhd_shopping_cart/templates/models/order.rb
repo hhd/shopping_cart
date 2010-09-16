@@ -6,4 +6,8 @@ class Order < ActiveRecord::Base
   def total
     self.purchases.reduce(0){|t, p| t + p.sub_total }
   end
+
+  def to_label
+    "Order #{self.id}"
+  end
 end
