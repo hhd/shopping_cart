@@ -1,11 +1,9 @@
-HHD Shopping Cart
-=================
+# HHD Shopping Cart
 
 This plugin will provide you with a generator and some helper methods for creating a shopping cart.
 
 
-Example
--------
+## Example
 
   $ ./script/generate hhd_shopping_cart gogoshoppingcart
 
@@ -29,8 +27,7 @@ Example
   end
 
 
-Gochas
-------
+## Gochas
 
 1. You must have a route for your purchasable item. Following on from the
 example above you should have a route like "map.resources :books" that makes
@@ -46,8 +43,7 @@ documentation. The generator doesn't actually use any of it's arguments, it's
 just a requirement of rails.
 
 
-Extensions
-----------
+## Extensions
 
 Members Area:
 
