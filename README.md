@@ -46,7 +46,7 @@ just a requirement of rails.
 
 ## Extensions
 
-Members Area:
+### Members Area:
 
   - Add code to pre-populate the addresses into /order/shipping_address
   - Add code to pre-populate the email address into /order
@@ -54,16 +54,16 @@ Members Area:
   - Create Admin::MembersController
   - Add the user column into Admin::MembersController
 
-Variable shipping:
+### Variable shipping:
   
   - Add fields for selecting shipping method on /order/shipping_address
 
-Hosted payment gateway:
+### Hosted payment gateway:
 
   - Add hidden fields describing the order to /order
   - Post from /order to the payment gateway
 
-API based payment gateway:
+### API based payment gateway:
 
   - Add a fields collecting the credit card information to
     /order/billing_address
