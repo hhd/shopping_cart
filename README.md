@@ -4,28 +4,29 @@ This plugin will provide you with a generator and some helper methods for creati
 
 
 ## Example
-
-  $ ./script/generate hhd_shopping_cart gogoshoppingcart
-
-  # app/models/book.rb
-  class Book << ActiveRecord::Base
-    acts_as_purchasable :name => :title, :price => :points
-  end
-
-  # app/views/books/show.html.erb
-  <% purchasable_form_for @book.to_purchase do |f| %>
-    <%= f.text_field :quantity %>
-    <%= f.submit "Add to cart" %>
-  <% end %>
-
-  # app/controllers/admin_controller.rb
-  def cms_nav
-    [
-      ["Orders", [Admin::OrdersController]],
-      Admin::AdminsController
-    ]
-  end
-
+ 
+   
+   $ ./script/generate hhd_shopping_cart gogoshoppingcart
+    
+   # app/models/book.rb
+   class Book << ActiveRecord::Base
+     acts_as_purchasable :name => :title, :price => :points
+   end
+    
+   # app/views/books/show.html.erb
+   <% purchasable_form_for @book.to_purchase do |f| %>
+     <%= f.text_field :quantity %>
+     <%= f.submit "Add to cart" %>
+   <% end %>
+    
+   # app/controllers/admin_controller.rb
+   def cms_nav
+     [
+       ["Orders", [Admin::OrdersController]],
+       Admin::AdminsController
+     ]
+   end
+   
 
 ## Gochas
 
