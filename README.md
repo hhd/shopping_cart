@@ -14,7 +14,7 @@ This plugin will provide you with a generator and some helper methods for creati
      end
       
      # app/views/books/show.html.erb
-     <% purchasable_form_for @book.to_purchase do |f| %>
+     <% purchasable_form_for @book.purchase do |f| %>
        <%= f.text_field :quantity %>
        <%= f.submit "Add to cart" %>
      <% end %>
