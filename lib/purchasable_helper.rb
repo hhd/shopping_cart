@@ -1,7 +1,7 @@
 module PurchasableHelper
 
-  def purchasable_form_for( purchasable )
-    form_for [:order, purchasable] do |f|
+  def purchasable_form_for( purchasable, *remainder )
+    form_for( [:order, purchasable], *remainder ) do |f|
       concat f.hidden_field(:name)
       concat f.hidden_field(:price)
       concat f.hidden_field(:quantity)
