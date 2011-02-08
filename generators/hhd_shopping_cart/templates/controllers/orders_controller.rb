@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
   before_filter :find_order, :except => [:thankyou]
 
   def create
-    @order.email = params[:order][:email]
     @order.placed = DateTime.now
 
     if @order.save

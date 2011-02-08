@@ -5,7 +5,6 @@ class CreateShoppingCart < ActiveRecord::Migration
       t.integer  :billing_address_id
       t.integer  :shipping_address_id
       t.datetime :placed
-      t.string   :email
 
       t.timestamps
     end
@@ -29,6 +28,7 @@ class CreateShoppingCart < ActiveRecord::Migration
       t.string :state
       t.string :post_code
       t.string :country
+      t.string :email
 
       t.timestamps
     end
