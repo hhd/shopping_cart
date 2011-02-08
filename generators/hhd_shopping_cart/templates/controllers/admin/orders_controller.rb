@@ -4,7 +4,7 @@ class Admin::OrdersController < AdminController
     config.list.label = "Orders"
     config.create.label = "Create Order"
 
-    config.columns = [:id, :email, :placed, :billing_address, :shipping_address, :purchases, :notes]
+    config.columns = [:id, :placed, :billing_address, :shipping_address, :purchases, :notes]
     config.list.columns.exclude [:notes]
 
     config.columns[:updated_at].options = {:format => "%d/%m/%Y %I:%M%p"}
